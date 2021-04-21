@@ -26,6 +26,12 @@ public class StudentRepository {
                 .map(i -> new Student(i, String.format("Customer%s", i)));
     }
 
+    public Flux<Student> getStudentList() {
+        return Flux.range(1, 10)
+                .doOnNext(i -> System.out.println(String.format("Processing Count : %s", i)))
+                .map(i -> new Student(i, String.format("Customer%s", i)));
+    }
+
     private static void sleepExecution(int i) {
         try {
             Thread.sleep(1000);
